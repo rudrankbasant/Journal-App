@@ -17,10 +17,9 @@
             android:id="@+id/dateTextView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-
-
-            android:background="@color/Color3"
+            android:background="@color/Color1"
             android:gravity="center"
+            android:textColor="@color/white"
             android:text="DATE"
             android:textSize="15sp" />
 

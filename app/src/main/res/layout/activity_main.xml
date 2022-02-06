@@ -4,15 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Color1"
+    android:background="@color/Color2"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titleJour"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/Color1"
+            android:fontFamily="cursive"
+            android:gravity="center"
+            android:text="Jour"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/titleJour"
+            android:inputType="textAutoComplete" />
+
+    </LinearLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="0dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/note_card"
         android:background="@color/Color2"
+        android:layout_below="@id/topBar"
         android:id="@+id/jourRecyclerView"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -26,7 +53,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="@color/Color2"
+        android:backgroundTint="@color/Color3"
         android:clickable="true"
         android:src="@drawable/add_icon" />
 </RelativeLayout>
