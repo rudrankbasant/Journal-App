@@ -16,20 +16,43 @@
         android:singleLine="true"
          />
 
-    <EditText
-        android:id="@+id/editNoteDescription"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/jourSaveButton"
-        android:layout_below="@id/editNoteTitle"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="5dp"
-        android:gravity="start|top"
-        android:hint="How was your day?"
-        android:inputType="textMultiLine"
-        android:singleLine="false" />
+        android:layout_below="@id/editNoteTitle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/editNoteDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="5dp"
+                android:gravity="start|top"
+                android:hint="How was your day?"
+                android:inputType="textMultiLine"
+                android:singleLine="false" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginBottom="5dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/jourSaveButton"
@@ -39,24 +62,60 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/Color3"
         android:clickable="true"
         android:src="@drawable/save_icon" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/jourAddImgButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/Color3"
+        android:clickable="true"
+        android:src="@drawable/imageadd_icon" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/jourFormatButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="170dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/Color3"
+        android:clickable="true"
+        android:src="@drawable/format_icon" />
+
+
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/Color3"
         android:clickable="true"
         android:src="@drawable/back_icon" />
+
+
 
 </RelativeLayout>

@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.example.jour.imgConverter.ImageConverter
 
 @Database(entities = arrayOf(Note::class), version = 1, exportSchema = false)
+//@TypeConverters(ImageConverter::class)
 abstract class JourDatabase: RoomDatabase() {
     abstract fun getEntitiesDao(): JourDao
 
@@ -20,7 +23,8 @@ abstract class JourDatabase: RoomDatabase() {
                     context.applicationContext,
                     JourDatabase::class.java,
                     "jour_database"
-                ).build()
+                ).fallbackToDestructiveMigration().
+                build()
                 INSTANCE =instance
                 instance
             }

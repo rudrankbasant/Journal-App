@@ -12,19 +12,18 @@ import com.example.jour.MVVM.JourViewModel
 import com.example.jour.MVVM.Note
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainActivity : AppCompatActivity(), NoteClickEditInterface, NoteClickDeleteInterface {
+class MainActivity : AppCompatActivity(), NoteClickEditInterface, NoteClickDeleteInterface{
     lateinit var jourRV: RecyclerView
     lateinit var addButton: FloatingActionButton
     lateinit var viewModel: JourViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         jourRV= findViewById(R.id.jourRecyclerView)
         addButton=findViewById(R.id.jourAddButton)
         jourRV.layoutManager=LinearLayoutManager(this)
 
-
+        //RVAdapter
         val jourRVAdapter = JourRVAdapter(this,this,this)
         jourRV.adapter = jourRVAdapter
         viewModel= ViewModelProvider(
@@ -57,9 +56,9 @@ class MainActivity : AppCompatActivity(), NoteClickEditInterface, NoteClickDelet
         intent.putExtra("noteTitle", note.jourTitle)
         intent.putExtra("noteDescription", note.jourDescription)
         intent.putExtra("noteID",note.id)
+        //intent.putExtra("image", note.jourImage )
         startActivity(intent)
         this.finish()
     }
-
 
 }

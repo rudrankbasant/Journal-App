@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="70dp"
         android:orientation="vertical">
 
         <TextView
@@ -23,12 +23,6 @@
             android:text="Jour"
             android:textColor="@color/white"
             android:textSize="30dp" />
-
-        <SearchView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/titleJour"
-            android:inputType="textAutoComplete" />
 
     </LinearLayout>
 

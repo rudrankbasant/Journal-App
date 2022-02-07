@@ -14,6 +14,6 @@ interface JourDao {
     @Delete
     fun delete(note: Note)
 
-    @Query(value = "Select * from jourTable order by date DESC")
+    @Query(value = "Select * from jourTable")
     fun getAllEntries(): LiveData<List<Note>>
 }

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/custom_edit_drawable"
+    tools:context=".TextFormatter">
+
+    <TextView
+        android:id="@+id/descHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
+        android:text="Description"
+        android:textSize="30dp" />
+
+
+    <TextView
+        android:id="@+id/fromHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descHeading"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="40dp"
+        android:text="From"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/toHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descHeading"
+        android:layout_marginStart="155dp"
+        android:layout_marginBottom="40dp"
+        android:text="To"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/startInt"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/descHeading"
+        android:layout_marginStart="10dp"
+        android:layout_toRightOf="@+id/fromHeading"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/endInt"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:inputType="number"
+        android:layout_below="@+id/descHeading"
+        android:layout_toRightOf="@+id/toHeading"
+        android:layout_marginStart="10dp" />
+
+
+    <TextView
+        android:id="@+id/colorHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fromHeading"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="40dp"
+        android:text="Color:"
+        android:textSize="20dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/formatBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/Color3"
+        android:clickable="true"
+        android:src="@drawable/cancel_icon" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/formatSaveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/Color3"
+        android:clickable="true"
+        android:src="@drawable/save_icon" />
+
+
+    <RadioButton
+        android:id="@+id/colorRadioButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fromHeading"
+        android:layout_marginLeft="24dp"
+        android:layout_toRightOf="@+id/colorHeading"
+        android:text="color" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/resultTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/colorHeading"
+        android:layout_centerHorizontal="true"
+
+        android:gravity="center"
+        android:foregroundGravity="center"/>
+
+
+
+</RelativeLayout>
