@@ -3,21 +3,22 @@ package com.example.jour
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.jour.MVVM.JourDatabase
 import com.example.jour.MVVM.JourViewModel
 import com.example.jour.MVVM.Note
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.io.ByteArrayOutputStream
+import java.io.FileInputStream
 import java.io.IOException
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -30,9 +31,8 @@ class AddEditNoteActivity : AppCompatActivity() {
     lateinit var viewModel: JourViewModel
     lateinit var addImageButton: FloatingActionButton
     lateinit var theimage: ImageView
-    lateinit var ImageURI: Uri
-    lateinit var bitmap: Bitmap
-
+    private var ImageURI: Uri? = null
+    private var bmp: Bitmap? = null
     var noteID= -1
 
     companion object{
@@ -63,7 +63,24 @@ class AddEditNoteActivity : AppCompatActivity() {
             noteID= intent.getIntExtra("noteID",-1)
             editTitle.setText(noteTitle)
             editDesc.setText(noteDesc)
-            //theimage.setImageBitmap(bitmap)
+
+
+
+            //Getting Bitmap Image
+            val filename = intent.getStringExtra("noteImage")
+            try{val receiveImage: FileInputStream = this.openFileInput(filename)
+            bmp=BitmapFactory.decodeStream(receiveImage)
+            var bitmapDrawable = BitmapDrawable(resources, bmp)
+            theimage.setImageDrawable(bitmapDrawable)
+            if(bmp!=null){
+                Log.d("hereboi",bmp.toString())
+            }else{
+                Log.d("hereboi","not here ")
+            }
+            receiveImage.close()
+            }catch(e:Exception){
+                e.printStackTrace()
+            }
         }
 
         /*val formattedTitle = intent.getStringExtra("formattedTitle")
@@ -81,13 +98,16 @@ class AddEditNoteActivity : AppCompatActivity() {
             val noteTitle= editTitle.text.toString()
             val noteDesc= editDesc.text.toString()
 
-            //val i = getStringFromBitmap(bitmap)
+
+
+
+
 
             if(noteType.equals("Edit")){
                 if(noteTitle.isNotEmpty() && noteDesc.isNotEmpty()){
                     val sdf= SimpleDateFormat("MMM, dd,yyyy")
                     val currentDate:String= sdf.format(Date())
-                    val updateNote = Note(noteTitle, noteDesc, currentDate )
+                    val updateNote = Note(noteTitle, noteDesc, currentDate, bmp )
                     updateNote.id=noteID
                     viewModel.updateNote(updateNote)
                     Toast.makeText(this,"Updated!",Toast.LENGTH_SHORT).show()
@@ -100,7 +120,7 @@ class AddEditNoteActivity : AppCompatActivity() {
                 if(noteTitle.isNotEmpty() && noteDesc.isNotEmpty()){
                     val sdf= SimpleDateFormat("MMM dd,yyyy")
                     val currentDate:String= sdf.format(Date())
-                    viewModel.addNote(Note(noteTitle,noteDesc,currentDate))
+                    viewModel.addNote(Note(noteTitle,noteDesc,currentDate,bmp))
                     Toast.makeText(this,"Added!",Toast.LENGTH_SHORT).show()
                     startActivity(Intent(applicationContext,MainActivity::class.java))
                     this.finish()
@@ -148,11 +168,12 @@ class AddEditNoteActivity : AppCompatActivity() {
 
 
             if (ImageURI!=null){
-                theimage.setImageURI(data?.data)
+                theimage.setImageURI(data.data)
 
                 try {
-                    bitmap =MediaStore.Images.Media.getBitmap(contentResolver, ImageURI)
-                    theimage.setImageBitmap(bitmap)
+                    bmp = MediaStore.Images.Media.getBitmap(contentResolver, ImageURI)
+                    theimage.setImageBitmap(bmp)
+
                 }catch(exception: IOException){
                     exception.printStackTrace()
 
@@ -164,13 +185,4 @@ class AddEditNoteActivity : AppCompatActivity() {
 
     }
 
-    fun getStringFromBitmap(bitmap: Bitmap): ByteArray {
-        val outputStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-        return outputStream.toByteArray()
-    }
-
-    fun getBitmapFromString(byteArray: ByteArray): Bitmap{
-        return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
-    }
 }

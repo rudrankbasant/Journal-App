@@ -12,7 +12,7 @@ class Note(
     @ColumnInfo(name = "title") val jourTitle:String,
     @ColumnInfo(name = "description") val jourDescription:String,
     @ColumnInfo(name = "date") val jourDate:String,
-    //@ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB) val jourImage: ByteArray
+    @ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB) val jourImage: Bitmap?
 ) {
     @PrimaryKey(autoGenerate = true)var id=0
 }

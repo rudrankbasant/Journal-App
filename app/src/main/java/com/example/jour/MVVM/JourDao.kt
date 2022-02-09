@@ -6,7 +6,7 @@ import androidx.room.*
 @Dao
 interface JourDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(note: Note)
+    fun insert(note: Note): Long
 
     @Update
     fun update(note: Note)
@@ -14,6 +14,6 @@ interface JourDao {
     @Delete
     fun delete(note: Note)
 
-    @Query(value = "Select * from jourTable  ")
+    @Query(value = "Select * from jourTable ")
     fun getAllEntries(): LiveData<List<Note>>
 }
