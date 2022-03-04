@@ -1,4 +1,4 @@
-# Jour
+# Journal-App
 A Journal App to store your daily entries. Performs all four CRUD functions. Uses ROOM database, MVVM Architecture.
 
 
